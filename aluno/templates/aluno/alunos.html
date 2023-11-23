@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block center %}
+  <h2> Lista de Alunos</h2>
+
+  
+    
+  <form method="get">
+   
+    <div class="mb-3">
+        <label for="nome" class="form-label">Nome</label>
+        {{ form.nome }}
+    </div>
+   
+    <div class="row">
+      <div class="col-md-6 mb-3">
+          <label for="cidade" class="form-label">Cidade</label>
+          {{ form.cidade }}
+      </div>
+      <div class="col-md-6 mb-3">
+          <label for="curso" class="form-label">Curso</label>
+          {{ form.curso }}
+      </div>
+  </div>
+  
+      <button type="submit" class="btn btn-primary">Filtrar</button>
+  </form>
+
+
+  <div class="d-flex justify-content-end">
+    <a href="{% url 'aluno_criar' %}" class="btn btn-success mb-3">Novo Cadastro</a>
+  </div>
+
+
+
+
+  <table class="table table-bordered" >
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Cidade</th>
+        <th>Curso</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for aluno in alunos %}  
+      <tr>
+        <td>{{ aluno.nome_aluno }}</td>
+        <td>{{ aluno.email }}</td>
+        <td>{{ aluno.cidade.nome }}</td>
+        <td>{{ aluno.curso.nome }}</td>
+        <td>
+          <a href="{% url 'aluno_editar' id=aluno.id %}" class="btn btn-primary btn-sm">Editar</a>
+          <a href="{% url 'aluno_remover' id=aluno.id %}" class="btn btn-danger btn-sm">Remover</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% include 'pagination.html' %}
+
+{% endblock %}
