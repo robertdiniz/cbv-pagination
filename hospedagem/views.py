@@ -1,4 +1,4 @@
-from django.views.generic import TemplateView,UpdateView,CreateView,DeleteView,ListView, DetailView
+from django.views.generic import TemplateView,UpdateView,CreateView,DeleteView,ListView,DetailView
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.shortcuts import render,get_object_or_404,redirect
@@ -52,6 +52,8 @@ class HospedagemListar(ListView):
 
 class HospedagemDetalhe(DetailView):
     model = Hospedagem
+    template_name = 'hospedagem/detail.html'
+    pk_url_kwarg = 'id'
     
 
 class IndexView(TemplateView):

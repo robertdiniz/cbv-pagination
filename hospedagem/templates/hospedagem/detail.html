@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block center %}
+    <h2> {{ hospedagem.cliente.nome }} para {{ hospedagem.data_entrada}} - {{ hospedagem.data_saida}} </h2>
+
+    <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+          <tr>
+            <th>Cliente</th>
+            <th>Valor</th>
+            <th>Quarto</th>
+            <th>Data de Entrada</th>
+            <th>Data de Saída</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+              <td>{{ hospedagem.cliente }}</td>
+              <td>{{ hospedagem.valor}}</td>
+              <td>{{ hospedagem.quarto.apartamento }}</td>
+              <td>{{ hospedagem.data_entrada }} </td>
+              <td>{{ hospedagem.data_saida }}</td>
+          </tr>
+        </tbody>
+      </table>
+
+    <a href="{% url 'hospedagem_listar' %}" class="btn btn-danger mt-5">Voltar</a>
+   
+{% endblock %}
+   

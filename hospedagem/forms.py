@@ -10,7 +10,7 @@ class HospedagemForm(ModelForm):
         widgets = {
             'data_entrada' : forms.DateInput(attrs={"class":"form-control", "type":"date"}),
             'data_saida' : forms.DateInput(attrs={"class":"form-control", "type":"date"}),
-            'valor' : forms.TextInput(attrs={"class":"form-control", "type":"number"}),
+            'valor' : forms.NumberInput(attrs={'class': 'form-control', "type": "number"}),
             'cliente': forms.Select(attrs={'class': 'form-control'}),
             'quarto': forms.Select(attrs={'class': 'form-control'})
         }
